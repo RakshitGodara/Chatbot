@@ -1,0 +1,323 @@
+[
+  {
+    "id": "1780411659822",
+    "title": "whats in attached doc",
+    "active": false,
+    "date": "Just now",
+    "messages": [
+      {
+        "id": "1780411906944",
+        "role": "user",
+        "content": "whats in attached doc",
+        "timestamp": "2026-06-02T14:51:46.944Z",
+        "citations": []
+      },
+      {
+        "id": "1780411908900",
+        "role": "assistant",
+        "content": "I am sorry, but the provided document context does not contain the information needed to answer your question.",
+        "citations": [
+          {
+            "id": 1,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": " and PySpark for delinquency tracking, DPD\nmonitoring, roll-rate analysis, and cohort/vintage reporting across lending portfolios.\n•Developed scalable data processing workflows and portfolio monitoring systems supporting risk analytics,\npricing strategy, and profitability assessment for retail lending products.\n•Automated operational reporting pipelines and recurring analytics workflows, reducing manual reporting\neffort by over 60 man-hours per month.\n•Designed and implemented data transformation workflows for securitization and refinancing eligibility\nanalysis, improving operational efficiency and reducing manual effort by 40+ man-hours monthly.\n•Built reusable reporting layers and portfolio analytics pipelines enabling faster decision making.\n•Collaborated with risk, collections, product, and business teams to convert operational requirements into\nscalable analytics and reporting solutions.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported lending analytics, "
+          },
+          {
+            "id": 2,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": ", and business teams to convert operational requirements into\nscalable analytics and reporting solutions.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported lending analytics, and reporting automation initiatives across retail banking portfolios.\n•Assisted in data extraction, data validation, reporting workflows, and portfolio performance monitoring\nprocesses.\nPROJECTS\nBanking Portfolio ETL & Analytics Pipeline\n•Built an end-to-end ETL pipeline using Python and SQL for ingesting, transforming, validating, and\nanalyzing lending portfolio datasets.\n•Automated cohort analysis, delinquency monitoring, and portfolio reporting workflows for business\nperformance tracking.\n•Optimized transformation logic and reporting workflows to improve data consistency and reduce processing\ntime.\nMulti-Threaded AI Chatbot with Persistent Memory\n•Built a context-aware AI chatbot using LangGraph, OpenAI APIs, and SQLite with persistent memory and\nmulti-session conversation tracking.\n•I"
+          },
+          {
+            "id": 3,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": "ssing, Distributed Data Processing,\nWorkflow Automation, Data Validation, Reporting Automation, Data Warehousing Concepts\n•Programming & Data: SQL, Python, PySpark, SAS, Pandas, NumPy, AWS, Excel\n•Analytics: Portfolio Analytics, Data Aggregation, Reporting Pipelines, SQL Query Optimization\nWORK EXPERIENCE\nData Analyst, IDFC First Bank, Mumbai \t07/2023 – 10/2025\n•Architected a Customer Lifetime Valuation (CLTV) framework, reorienting retention and engagement\ntoward the top 16% value segment and improving Customer Acquisition Cost efficiency.\n•Built a DCF-based valuation engine for segment-level profitability assessment, enabling risk-based\npricing and capital allocation and driving a 27 bps repricing of Two-Wheeler loan yields.\n•Built automated ETL and analytics pipelines using SQL, Python, and PySpark for delinquency tracking, DPD\nmonitoring, roll-rate analysis, and cohort/vintage reporting across lending portfolios.\n•Developed scalable data processing workflows and portfolio monitorin"
+          }
+        ],
+        "timestamp": "2026-06-02T14:51:48.900Z"
+      },
+      {
+        "id": "1780412621781",
+        "role": "user",
+        "content": "whats in attached doc",
+        "timestamp": "2026-06-02T15:03:41.781Z",
+        "citations": []
+      },
+      {
+        "id": "1780412623104",
+        "role": "assistant",
+        "content": "I'm sorry, but I can't access or view attachments. However, if you can provide text or details from the document, I'd be happy to help you with it!",
+        "citations": [],
+        "timestamp": "2026-06-02T15:03:43.104Z"
+      },
+      {
+        "id": "1780412631779",
+        "role": "user",
+        "content": "whats in attached doc",
+        "timestamp": "2026-06-02T15:03:51.779Z",
+        "citations": []
+      },
+      {
+        "id": "1780412634065",
+        "role": "assistant",
+        "content": "I apologize for any confusion, but I am unable to view or access attachments. If you can share the content or key points from the document, I would be glad to help you with it!",
+        "citations": [],
+        "timestamp": "2026-06-02T15:03:54.065Z"
+      },
+      {
+        "id": "1780412947545",
+        "role": "user",
+        "content": "whats in attached doc",
+        "timestamp": "2026-06-02T15:09:07.546Z",
+        "citations": []
+      },
+      {
+        "id": "1780412949551",
+        "role": "assistant",
+        "content": "I’m sorry, but I cannot access or view any attached documents. If you can provide the text or main points from the document, I would be happy to help you with that information!",
+        "citations": [],
+        "timestamp": "2026-06-02T15:09:09.551Z"
+      },
+      {
+        "id": "1780412955495",
+        "role": "user",
+        "content": "whats in attached doc",
+        "timestamp": "2026-06-02T15:09:15.495Z",
+        "citations": []
+      },
+      {
+        "id": "1780412961438",
+        "role": "assistant",
+        "content": "The document contains information about the professional experience and skills of an individual named Rakshit Godara. It highlights their work as a Data Analyst Intern at IDFC First Bank in Mumbai from July 2022 to December 2022. Key responsibilities and achievements include:\n\n- Utilizing tools like Python and PySpark for delinquency tracking, DPD monitoring, roll-rate analysis, and cohort/vintage reporting across lending portfolios.\n- Developing scalable data processing workflows and portfolio monitoring systems to support risk analytics, pricing strategy, and profitability assessment for retail lending products.\n- Automating operational reporting pipelines and recurring analytics workflows, which reduced manual reporting efforts by over 60 man-hours per month.\n- Designing and implementing data transformation workflows for securitization and refinancing eligibility analysis, improving operational efficiency and reducing manual effort by over 40 man-hours monthly.\n- Building reusable reporting layers and portfolio analytics pipelines to enable faster decision-making.\n- Collaborating with various teams, including risk, collections, product, and business, to convert operational requirements into scalable analytics and reporting solutions [1][2][3].",
+        "citations": [
+          {
+            "id": 1,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": " and PySpark for delinquency tracking, DPD\nmonitoring, roll-rate analysis, and cohort/vintage reporting across lending portfolios.\n•Developed scalable data processing workflows and portfolio monitoring systems supporting risk analytics,\npricing strategy, and profitability assessment for retail lending products.\n•Automated operational reporting pipelines and recurring analytics workflows, reducing manual reporting\neffort by over 60 man-hours per month.\n•Designed and implemented data transformation workflows for securitization and refinancing eligibility\nanalysis, improving operational efficiency and reducing manual effort by 40+ man-hours monthly.\n•Built reusable reporting layers and portfolio analytics pipelines enabling faster decision making.\n•Collaborated with risk, collections, product, and business teams to convert operational requirements into\nscalable analytics and reporting solutions.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported lending analytics, "
+          },
+          {
+            "id": 2,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": " and PySpark for delinquency tracking, DPD\nmonitoring, roll-rate analysis, and cohort/vintage reporting across lending portfolios.\n•Developed scalable data processing workflows and portfolio monitoring systems supporting risk analytics,\npricing strategy, and profitability assessment for retail lending products.\n•Automated operational reporting pipelines and recurring analytics workflows, reducing manual reporting\neffort by over 60 man-hours per month.\n•Designed and implemented data transformation workflows for securitization and refinancing eligibility\nanalysis, improving operational efficiency and reducing manual effort by 40+ man-hours monthly.\n•Built reusable reporting layers and portfolio analytics pipelines enabling faster decision making.\n•Collaborated with risk, collections, product, and business teams to convert operational requirements into\nscalable analytics and reporting solutions.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported lending analytics, "
+          },
+          {
+            "id": 3,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": " and PySpark for delinquency tracking, DPD\nmonitoring, roll-rate analysis, and cohort/vintage reporting across lending portfolios.\n•Developed scalable data processing workflows and portfolio monitoring systems supporting risk analytics,\npricing strategy, and profitability assessment for retail lending products.\n•Automated operational reporting pipelines and recurring analytics workflows, reducing manual reporting\neffort by over 60 man-hours per month.\n•Designed and implemented data transformation workflows for securitization and refinancing eligibility\nanalysis, improving operational efficiency and reducing manual effort by 40+ man-hours monthly.\n•Built reusable reporting layers and portfolio analytics pipelines enabling faster decision making.\n•Collaborated with risk, collections, product, and business teams to convert operational requirements into\nscalable analytics and reporting solutions.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported lending analytics, "
+          }
+        ],
+        "timestamp": "2026-06-02T15:09:21.439Z"
+      },
+      {
+        "id": "1780415536772",
+        "role": "user",
+        "content": "give a summary of attached files",
+        "timestamp": "2026-06-02T15:52:16.772Z",
+        "citations": []
+      },
+      {
+        "id": "1780415542993",
+        "role": "assistant",
+        "content": "The document provides a summary of Rakshit Godara's professional background as a Data and Analytics Engineer with over 2 years of experience in the banking and fintech sectors, specifically at IDFC First Bank. Key highlights include:\n\n1. **Professional Experience**:\n   - Worked as a Data Analyst Intern at IDFC First Bank from July 2022 to December 2022, focusing on lending analytics and reporting automation.\n   - Developed an end-to-end ETL pipeline using Python and SQL for analyzing lending portfolio datasets.\n   - Automated various reporting workflows, significantly reducing manual reporting efforts by over 60 man-hours per month.\n\n2. **Technical Skills**:\n   - Proficient in SQL, Python, and PySpark for large-scale data processing and analytics.\n   - Experienced in designing production-grade analytics workflows that support risk analytics, pricing strategies, and operational reporting.\n\n3. **Projects**:\n   - Built a multi-threaded AI chatbot with persistent memory for enhanced user interaction.\n   - Created data transformation workflows for analyzing securitization and refinancing eligibility, improving operational efficiency.\n\nOverall, the document outlines Rakshit Godara's capabilities in data engineering, analytics, and his contributions to optimizing workflows and reporting systems in the banking sector [1][2][3].",
+        "citations": [
+          {
+            "id": 1,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": ", and business teams to convert operational requirements into\nscalable analytics and reporting solutions.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported lending analytics, and reporting automation initiatives across retail banking portfolios.\n•Assisted in data extraction, data validation, reporting workflows, and portfolio performance monitoring\nprocesses.\nPROJECTS\nBanking Portfolio ETL & Analytics Pipeline\n•Built an end-to-end ETL pipeline using Python and SQL for ingesting, transforming, validating, and\nanalyzing lending portfolio datasets.\n•Automated cohort analysis, delinquency monitoring, and portfolio reporting workflows for business\nperformance tracking.\n•Optimized transformation logic and reporting workflows to improve data consistency and reduce processing\ntime.\nMulti-Threaded AI Chatbot with Persistent Memory\n•Built a context-aware AI chatbot using LangGraph, OpenAI APIs, and SQLite with persistent memory and\nmulti-session conversation tracking.\n•I"
+          },
+          {
+            "id": 2,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": " and PySpark for delinquency tracking, DPD\nmonitoring, roll-rate analysis, and cohort/vintage reporting across lending portfolios.\n•Developed scalable data processing workflows and portfolio monitoring systems supporting risk analytics,\npricing strategy, and profitability assessment for retail lending products.\n•Automated operational reporting pipelines and recurring analytics workflows, reducing manual reporting\neffort by over 60 man-hours per month.\n•Designed and implemented data transformation workflows for securitization and refinancing eligibility\nanalysis, improving operational efficiency and reducing manual effort by 40+ man-hours monthly.\n•Built reusable reporting layers and portfolio analytics pipelines enabling faster decision making.\n•Collaborated with risk, collections, product, and business teams to convert operational requirements into\nscalable analytics and reporting solutions.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported lending analytics, "
+          },
+          {
+            "id": 3,
+            "filename": "RAKSHIT_GODARA.pdf",
+            "pageNum": 1,
+            "text": "RAKSHIT GODARA\nrakshitgodara1999@gmail.com \t+91 76656 42225 \tLinkedIn\nPROFESSIONAL SUMMARY\nData and Analytics Engineer with 2+ years of experience building scalable data pipelines, automated analytics\nworkflows, and portfolio monitoring systems in the banking and fintech domain at IDFC FIRST Bank. Skilled\nin SQL, Python, and PySpark for large-scale data processing, ETL automation, data transformation, and\nreporting systems. Experienced in designing production-grade analytics workflows supporting risk analytics,\npricing strategy, profitability monitoring, and operational reporting across lending portfolios. Strong\nunderstanding of structured data processing, workflow optimization, and business-driven data systems.\nKEY SKILLS\n•Data Engineering: ETL Pipelines, Data Transformation, Batch Processing, Distributed Data Processing,\nWorkflow Automation, Data Validation, Reporting Automation, Data Warehousing Concepts\n•Programming & Data: SQL, Python, PySpark, SAS, Pandas, NumPy, AWS, Excel\n•Ana"
+          }
+        ],
+        "timestamp": "2026-06-02T15:52:22.993Z"
+      }
+    ],
+    "mode": "rag"
+  },
+  {
+    "id": "1780409497428",
+    "title": "Hi, its rakshit",
+    "active": true,
+    "date": "Just now",
+    "messages": [
+      {
+        "id": "1780409506942",
+        "role": "user",
+        "content": "Hi, its rakshit",
+        "timestamp": "2026-06-02T14:11:46.942Z",
+        "citations": []
+      },
+      {
+        "id": "1780409508352",
+        "role": "assistant",
+        "content": "Hi Rakshit! How can I assist you today?",
+        "timestamp": "2026-06-02T14:11:48.352Z",
+        "citations": []
+      },
+      {
+        "id": "1780409756734",
+        "role": "user",
+        "content": "I have attached my resume, check it",
+        "timestamp": "2026-06-02T14:15:56.734Z",
+        "citations": []
+      },
+      {
+        "id": "1780409758596",
+        "role": "assistant",
+        "content": "I'm sorry, but I can't view or analyze attachments. However, if you share the text or specific sections of your resume, I can certainly help you with feedback or suggestions!",
+        "timestamp": "2026-06-02T14:15:58.596Z",
+        "citations": []
+      },
+      {
+        "id": "1780411266224",
+        "role": "user",
+        "content": "whats in my attached doc",
+        "timestamp": "2026-06-02T14:41:06.224Z",
+        "citations": []
+      },
+      {
+        "id": "1780411267404",
+        "role": "assistant",
+        "content": "🔍 **Local Vector Retrieval Report**\nQuery: \"whats in my attached doc\"\nTarget: 🌐 Global Index (All PDFs)\n\nFound 3 matching text segments:\n\n--------------------------------------------------\n[1] Similarity Score: 23.08% | File: RAKSHIT_GODARA.pdf | Chunk #2\n--------------------------------------------------\nand improving Customer Acquisition Cost efficiency.\n•Built a DCF-based valuation engine for segment-level profitability assessment, enabling risk-based\npricing and capital allocation and driving a 27 bps repricing of Two-Wheeler loan yields.\n•Automated delinquency analytics, DPD tracking, roll-rate monitoring, and cohort/vintage analysis\nworkflows using SQL, Python, and PySpark, reducing manual effort by 60+ man hours per month.\n•Developed scalable portfolio analytics pipelines and decision-oriented dashboards for profitability\nmonitoring, enabling faster pricing and portfolio strategy decisions for senior stakeholders.\n•Streamlined securitization and refinancing eligibility workflows and automated operational reporting\nprocesses, reducing manual reporting effort by 40+ man hours monthly.\n•Collaborated with risk, collections, product, and business teams to translate analytical insights into\nactionable portfolio and pricing strategies.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2\n\n--------------------------------------------------\n[2] Similarity Score: 22.55% | File: RAKSHIT_GODARA.pdf | Chunk #3\n--------------------------------------------------\n•Collaborated with risk, collections, product, and business teams to translate analytical insights into\nactionable portfolio and pricing strategies.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported portfolio monitoring, lending analytics, and risk reporting initiatives across retail banking\nportfolios.\n•Assisted in analytical reporting automation, portfolio performance tracking, and data validation workflows.\nPROJECTS\nCredit Risk Loan Default Prediction\n•Built an end-to-end loan default prediction pipeline using Logistic Regression and Gradient Boosting\nmodels on lending datasets.\n•Performed feature engineering, WOE binning, IV analysis, model validation, and hyperparameter tuning to\nimprove model performance and interpretability.\nMulti-Threaded AI Chatbot with Persistent Memory\n•Built a context-aware AI chatbot using LangGraph, OpenAI APIs, and SQLite with persistent memory and\nmulti-session conversation tracking.\n•Implemented real-time response streaming an\n\n--------------------------------------------------\n[3] Similarity Score: 20.98% | File: RAKSHIT_GODARA.pdf | Chunk #4\n--------------------------------------------------\nersistent Memory\n•Built a context-aware AI chatbot using LangGraph, OpenAI APIs, and SQLite with persistent memory and\nmulti-session conversation tracking.\n•Implemented real-time response streaming and retrieval-based conversational memory for improved\ncontextual interactions.\nEDUCATION\nB.E. Electrical and Electronics Engineering | BITS Pilani (2019 – 2023)\n\n-- 1 of 1 --\n\n",
+        "timestamp": "2026-06-02T14:41:07.404Z",
+        "citations": []
+      },
+      {
+        "id": "1780411423716",
+        "role": "user",
+        "content": "give a summary",
+        "timestamp": "2026-06-02T14:43:43.716Z",
+        "citations": []
+      },
+      {
+        "id": "1780411426652",
+        "role": "assistant",
+        "content": "🔍 **Local Vector Retrieval Report**\nQuery: \"give a summary\"\nTarget: 🌐 Global Index (All PDFs)\n\nFound 3 matching text segments:\n\n--------------------------------------------------\n[1] Similarity Score: 19.92% | File: RAKSHIT_GODARA.pdf | Chunk #3\n--------------------------------------------------\n•Collaborated with risk, collections, product, and business teams to translate analytical insights into\nactionable portfolio and pricing strategies.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2022 – 12/2022\n•Supported portfolio monitoring, lending analytics, and risk reporting initiatives across retail banking\nportfolios.\n•Assisted in analytical reporting automation, portfolio performance tracking, and data validation workflows.\nPROJECTS\nCredit Risk Loan Default Prediction\n•Built an end-to-end loan default prediction pipeline using Logistic Regression and Gradient Boosting\nmodels on lending datasets.\n•Performed feature engineering, WOE binning, IV analysis, model validation, and hyperparameter tuning to\nimprove model performance and interpretability.\nMulti-Threaded AI Chatbot with Persistent Memory\n•Built a context-aware AI chatbot using LangGraph, OpenAI APIs, and SQLite with persistent memory and\nmulti-session conversation tracking.\n•Implemented real-time response streaming an\n\n--------------------------------------------------\n[2] Similarity Score: 18.14% | File: RAKSHIT_GODARA.pdf | Chunk #2\n--------------------------------------------------\nand improving Customer Acquisition Cost efficiency.\n•Built a DCF-based valuation engine for segment-level profitability assessment, enabling risk-based\npricing and capital allocation and driving a 27 bps repricing of Two-Wheeler loan yields.\n•Automated delinquency analytics, DPD tracking, roll-rate monitoring, and cohort/vintage analysis\nworkflows using SQL, Python, and PySpark, reducing manual effort by 60+ man hours per month.\n•Developed scalable portfolio analytics pipelines and decision-oriented dashboards for profitability\nmonitoring, enabling faster pricing and portfolio strategy decisions for senior stakeholders.\n•Streamlined securitization and refinancing eligibility workflows and automated operational reporting\nprocesses, reducing manual reporting effort by 40+ man hours monthly.\n•Collaborated with risk, collections, product, and business teams to translate analytical insights into\nactionable portfolio and pricing strategies.\nData Analyst Intern, IDFC First Bank, Mumbai \t07/2\n\n--------------------------------------------------\n[3] Similarity Score: 16.89% | File: RAKSHIT_GODARA.pdf | Chunk #1\n--------------------------------------------------\nision Science: Credit Risk Analytics, Delinquency & Roll Rate Analysis, Portfolio\nMonitoring, Cohort & Vintage Analysis, Churn & Retention Modeling, Portfolio & Cohort Analysis,\nCustomer Profitability & Valuation Framework, Risk-Based Pricing, Capital Allocation\n•Programming & Data: SQL, Python, PySpark, SAS, Pandas, NumPy, AWS, Excel\nWORK EXPERIENCE\nData Analyst, IDFC First Bank, Mumbai \t07/2023 – 10/2025\n•Built and implemented a Logistic Regression based Early Warning System (EWS) for business banking\nportfolios to identify early stage delinquency risk, enabling proactive collections prioritization and\ncontributing to a 15% reduction in portfolio delinquency.\n•Architected a Customer Lifetime Valuation (CLTV) framework, reorienting retention and engagement\ntoward the top 16% value segment and improving Customer Acquisition Cost efficiency.\n•Built a DCF-based valuation engine for segment-level profitability assessment, enabling risk-based\npricing and capital allocation and driving a 27\n\n",
+        "timestamp": "2026-06-02T14:43:46.652Z",
+        "citations": []
+      },
+      {
+        "id": "1780411473995",
+        "role": "user",
+        "content": "give a summary",
+        "timestamp": "2026-06-02T14:44:33.995Z",
+        "citations": []
+      },
+      {
+        "id": "1780411479750",
+        "role": "assistant",
+        "content": "Based on the information extracted from your resume, here’s a summary:\n\n---\n\n**Rakshit Godara - Summary**\n\n**Education:**\n- Bachelor of Engineering in Electrical and Electronics Engineering from BITS Pilani (2019 – 2023).\n\n**Work Experience:**\n- **Data Analyst, IDFC First Bank, Mumbai (July 2023 – October 2025)**\n  - Developed a Logistic Regression-based Early Warning System (EWS) to identify early-stage delinquency risks, contributing to a 15% reduction in portfolio delinquency.\n  - Created a Customer Lifetime Valuation (CLTV) framework to enhance retention strategies and improve customer acquisition cost efficiency.\n  - Built a Discounted Cash Flow (DCF)-based valuation engine for segment-level profitability assessment, facilitating risk-based pricing and capital allocation.\n\n- **Data Analyst Intern, IDFC First Bank, Mumbai (July 2022 – December 2022)**\n  - Supported portfolio monitoring, lending analytics, and risk reporting initiatives.\n  - Assisted in automating analytical reporting and portfolio performance tracking.\n\n**Projects:**\n- **Credit Risk Loan Default Prediction:**\n  - Developed an end-to-end loan default prediction pipeline using Logistic Regression and Gradient Boosting models, focusing on feature engineering and model validation.\n  \n- **Multi-Threaded AI Chatbot with Persistent Memory:**\n  - Created a context-aware AI chatbot utilizing LangGraph and OpenAI APIs, enabling multi-session conversation tracking and real-time response streaming.\n\n**Technical Skills:**\n- Proficient in SQL, Python, PySpark, SAS, and data analysis libraries such as Pandas and NumPy.\n- Experienced in AWS and Excel for data management and analysis.\n\n---\n\nFeel free to modify any part of this summary or let me know if you need additional details!",
+        "timestamp": "2026-06-02T14:44:39.750Z",
+        "citations": []
+      },
+      {
+        "id": "1780412605076",
+        "role": "user",
+        "content": "whats in attached doc",
+        "timestamp": "2026-06-02T15:03:25.076Z",
+        "citations": []
+      },
+      {
+        "id": "1780412607015",
+        "role": "assistant",
+        "content": "I'm unable to view or access attachments directly. However, if you can provide text or specific sections from your document, I can help you analyze or summarize that information. Please share any details you'd like assistance with!",
+        "citations": [],
+        "timestamp": "2026-06-02T15:03:27.015Z"
+      }
+    ],
+    "mode": "ai-only"
+  },
+  {
+    "id": "default",
+    "title": "When will PDF uploads ...",
+    "active": false,
+    "date": "Just now",
+    "messages": [
+      {
+        "id": "1780409490845",
+        "role": "user",
+        "content": "When will PDF uploads and document analysis be fully supported?",
+        "timestamp": "2026-06-02T14:11:30.845Z",
+        "citations": []
+      },
+      {
+        "id": "1780409493435",
+        "role": "assistant",
+        "content": "I don't have specific information on future updates or features such as PDF uploads and document analysis. For the latest updates on features and capabilities, it's best to check the official website or announcements from the service you are inquiring about.",
+        "timestamp": "2026-06-02T14:11:33.436Z",
+        "citations": []
+      },
+      {
+        "id": "1780411497860",
+        "role": "user",
+        "content": "give a summary",
+        "timestamp": "2026-06-02T14:44:57.860Z",
+        "citations": []
+      },
+      {
+        "id": "1780411499412",
+        "role": "assistant",
+        "content": "I don't have specific information on when PDF uploads and document analysis will be fully supported. For the latest updates on features, it's best to check the official website or announcements from the relevant service.",
+        "timestamp": "2026-06-02T14:44:59.412Z",
+        "citations": []
+      },
+      {
+        "id": "1780411513763",
+        "role": "user",
+        "content": "can you read attached pdf",
+        "timestamp": "2026-06-02T14:45:13.763Z",
+        "citations": []
+      },
+      {
+        "id": "1780411515628",
+        "role": "assistant",
+        "content": "I'm unable to read or analyze attached files, including PDFs. However, if you have specific text or content from a PDF that you would like to discuss or analyze, feel free to share it here, and I'll do my best to assist you!",
+        "timestamp": "2026-06-02T14:45:15.628Z",
+        "citations": []
+      },
+      {
+        "id": "1780411538735",
+        "role": "user",
+        "content": "can you read attached pdf",
+        "timestamp": "2026-06-02T14:45:38.735Z",
+        "citations": []
+      },
+      {
+        "id": "1780411540248",
+        "role": "assistant",
+        "content": "I cannot read or access attached files, including PDFs. However, if you can provide text or specific information from the PDF, I'll be happy to help you with it!",
+        "timestamp": "2026-06-02T14:45:40.248Z",
+        "citations": []
+      },
+      {
+        "id": "1780412592283",
+        "role": "user",
+        "content": "whats in attached doc",
+        "timestamp": "2026-06-02T15:03:12.283Z",
+        "citations": []
+      },
+      {
+        "id": "1780412594141",
+        "role": "assistant",
+        "content": "I'm unable to view or access attached documents. If you can share the content or key details from the document, I would be glad to help you with any questions or analysis you need!",
+        "citations": [],
+        "timestamp": "2026-06-02T15:03:14.141Z"
+      }
+    ]
+  }
+]
