@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import path from "path";
-import { PDFParse } from "pdf-parse";
+import pdfParse from "pdf-parse";
 import { supabase } from "@/lib/supabase";
 
 // Helper function to chunk text
@@ -54,9 +54,7 @@ export async function POST(req: Request) {
     const arrayBuf = await fileData.arrayBuffer();
     const buffer = Buffer.from(arrayBuf);
 
-    const parser = new PDFParse({ data: buffer });
-    const parsedData = await parser.getText();
-    await parser.destroy();
+    const parsedData = await pdfParse(buffer);
 
     const fullText = parsedData.text || "";
 
@@ -67,32 +65,12 @@ export async function POST(req: Request) {
       );
     }
 
-    // 3. Chunk text page-by-page
-    interface PageData {
-      text: string;
-      num: number;
-    }
-
+    // 3. Chunk the full extracted text
     const chunksWithPage: { text: string; pageNum: number }[] = [];
 
-    if (
-      parsedData.pages &&
-      Array.isArray(parsedData.pages) &&
-      parsedData.pages.length > 0
-    ) {
-      for (const page of parsedData.pages as PageData[]) {
-        const pageChunks = chunkText(page.text || "");
-        for (const chunkTextContent of pageChunks) {
-          if (chunkTextContent.trim()) {
-            chunksWithPage.push({ text: chunkTextContent, pageNum: page.num || 1 });
-          }
-        }
-      }
-    } else {
-      for (const chunkTextContent of chunkText(fullText)) {
-        if (chunkTextContent.trim()) {
-          chunksWithPage.push({ text: chunkTextContent, pageNum: 1 });
-        }
+    for (const chunkTextContent of chunkText(fullText)) {
+      if (chunkTextContent.trim()) {
+        chunksWithPage.push({ text: chunkTextContent, pageNum: 1 });
       }
     }
 

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import path from "path";
-import { PDFParse } from "pdf-parse";
+import pdfParse from "pdf-parse";
 import { supabase } from "@/lib/supabase";
 
 export async function GET(req: Request) {
@@ -33,13 +33,11 @@ export async function GET(req: Request) {
     const arrayBuf = await fileData.arrayBuffer();
     const buffer = Buffer.from(arrayBuf);
 
-    const parser = new PDFParse({ data: buffer });
-    const parsedData = await parser.getText();
-    await parser.destroy();
+    const parsedData = await pdfParse(buffer);
 
     return NextResponse.json({
       text: parsedData.text || "",
-      numPages: parsedData.total || 1,
+      numPages: parsedData.numpages || 1,
     });
   } catch (error: unknown) {
     const errorMessage =
