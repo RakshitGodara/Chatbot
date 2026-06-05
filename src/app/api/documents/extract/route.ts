@@ -1,25 +1,9 @@
 import { NextResponse } from "next/server";
 import path from "path";
-import { execFile } from "child_process";
-import { promisify } from "util";
-import fs from "fs/promises";
-import os from "os";
+import { PDFParse } from "pdf-parse";
 import { supabase } from "@/lib/supabase";
 
-const execFilePromise = promisify(execFile);
-const PARSER_SCRIPT = path.join(
-  process.cwd(),
-  "src",
-  "app",
-  "api",
-  "documents",
-  "parse-pdf.js"
-);
-const TMP_DIR = os.tmpdir();
-
 export async function GET(req: Request) {
-  let tmpFilePath: string | null = null;
-
   try {
     const { searchParams } = new URL(req.url);
     const name = searchParams.get("name");
@@ -45,19 +29,17 @@ export async function GET(req: Request) {
       );
     }
 
-    // Write to temp file for parsing
-    await fs.mkdir(TMP_DIR, { recursive: true });
-    tmpFilePath = path.join(TMP_DIR, safeFilename);
+    // Parse PDF directly from memory buffer
     const arrayBuf = await fileData.arrayBuffer();
-    await fs.writeFile(tmpFilePath, Buffer.from(arrayBuf));
+    const buffer = Buffer.from(arrayBuf);
 
-    // Parse PDF using the standalone parser script
-    const { stdout } = await execFilePromise("node", [PARSER_SCRIPT, tmpFilePath]);
-    const data = JSON.parse(stdout);
+    const parser = new PDFParse({ data: buffer });
+    const parsedData = await parser.getText();
+    await parser.destroy();
 
     return NextResponse.json({
-      text: data.text || "",
-      numPages: data.total || 1,
+      text: parsedData.text || "",
+      numPages: parsedData.total || 1,
     });
   } catch (error: unknown) {
     const errorMessage =
@@ -66,9 +48,5 @@ export async function GET(req: Request) {
       { error: `Failed to extract PDF text: ${errorMessage}` },
       { status: 500 }
     );
-  } finally {
-    if (tmpFilePath) {
-      await fs.unlink(tmpFilePath).catch(() => {});
-    }
   }
 }

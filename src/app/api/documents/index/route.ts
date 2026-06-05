@@ -1,22 +1,7 @@
 import { NextResponse } from "next/server";
 import path from "path";
-import { execFile } from "child_process";
-import { promisify } from "util";
-import fs from "fs/promises";
-import os from "os";
+import { PDFParse } from "pdf-parse";
 import { supabase } from "@/lib/supabase";
-
-const execFilePromise = promisify(execFile);
-const PARSER_SCRIPT = path.join(
-  process.cwd(),
-  "src",
-  "app",
-  "api",
-  "documents",
-  "parse-pdf.js"
-);
-// Temp dir for downloaded PDFs before parsing
-const TMP_DIR = os.tmpdir();
 
 // Helper function to chunk text
 function chunkText(text: string, chunkSize = 1000, overlap = 200): string[] {
@@ -33,8 +18,6 @@ function chunkText(text: string, chunkSize = 1000, overlap = 200): string[] {
 }
 
 export async function POST(req: Request) {
-  let tmpFilePath: string | null = null;
-
   try {
     const { name } = await req.json();
 
@@ -55,7 +38,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 1. Download PDF from Supabase Storage to a temp file
+    // 1. Download PDF from Supabase Storage
     const { data: fileData, error: downloadError } = await supabase.storage
       .from("documents")
       .download(safeFilename);
@@ -67,14 +50,14 @@ export async function POST(req: Request) {
       );
     }
 
-    await fs.mkdir(TMP_DIR, { recursive: true });
-    tmpFilePath = path.join(TMP_DIR, safeFilename);
+    // 2. Extract text directly from memory buffer
     const arrayBuf = await fileData.arrayBuffer();
-    await fs.writeFile(tmpFilePath, Buffer.from(arrayBuf));
+    const buffer = Buffer.from(arrayBuf);
 
-    // 2. Extract text using the parser script
-    const { stdout } = await execFilePromise("node", [PARSER_SCRIPT, tmpFilePath]);
-    const parsedData = JSON.parse(stdout);
+    const parser = new PDFParse({ data: buffer });
+    const parsedData = await parser.getText();
+    await parser.destroy();
+
     const fullText = parsedData.text || "";
 
     if (!fullText.trim()) {
@@ -191,10 +174,5 @@ export async function POST(req: Request) {
       { error: `Failed to index document: ${errorMessage}` },
       { status: 500 }
     );
-  } finally {
-    // Clean up temp file
-    if (tmpFilePath) {
-      await fs.unlink(tmpFilePath).catch(() => {});
-    }
   }
 }
