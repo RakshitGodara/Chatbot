@@ -3,6 +3,7 @@ import path from "path";
 import { execFile } from "child_process";
 import { promisify } from "util";
 import fs from "fs/promises";
+import os from "os";
 import { supabase } from "@/lib/supabase";
 
 const execFilePromise = promisify(execFile);
@@ -15,7 +16,7 @@ const PARSER_SCRIPT = path.join(
   "parse-pdf.js"
 );
 // Temp dir for downloaded PDFs before parsing
-const TMP_DIR = path.join(process.cwd(), "storage", "tmp");
+const TMP_DIR = os.tmpdir();
 
 // Helper function to chunk text
 function chunkText(text: string, chunkSize = 1000, overlap = 200): string[] {

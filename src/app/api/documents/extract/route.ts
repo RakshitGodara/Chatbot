@@ -3,6 +3,7 @@ import path from "path";
 import { execFile } from "child_process";
 import { promisify } from "util";
 import fs from "fs/promises";
+import os from "os";
 import { supabase } from "@/lib/supabase";
 
 const execFilePromise = promisify(execFile);
@@ -14,7 +15,7 @@ const PARSER_SCRIPT = path.join(
   "documents",
   "parse-pdf.js"
 );
-const TMP_DIR = path.join(process.cwd(), "storage", "tmp");
+const TMP_DIR = os.tmpdir();
 
 export async function GET(req: Request) {
   let tmpFilePath: string | null = null;
