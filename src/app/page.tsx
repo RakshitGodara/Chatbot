@@ -61,6 +61,20 @@ export default function Home() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const parseResponseError = async (res: Response, fallbackMsg: string): Promise<string> => {
+    try {
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const data = await res.json();
+        return data.error || fallbackMsg;
+      }
+      const text = await res.text();
+      return `Server error (${res.status}): ${text.substring(0, 150)}...`;
+    } catch {
+      return fallbackMsg;
+    }
+  };
+
   // Derived states
   const activeConversation = conversations.find((c) => c.active);
   const messages = useMemo(() => {
@@ -199,8 +213,8 @@ export default function Home() {
       });
 
       if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to upload the file.");
+        const errMsg = await parseResponseError(res, "Failed to upload the file.");
+        throw new Error(errMsg);
       }
 
       const data = await res.json();
@@ -236,8 +250,8 @@ export default function Home() {
     try {
       const res = await fetch(`/api/documents/extract?name=${encodeURIComponent(filename)}`);
       if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to extract text from document.");
+        const errMsg = await parseResponseError(res, "Failed to extract text from document.");
+        throw new Error(errMsg);
       }
 
       const data = await res.json();
@@ -277,17 +291,24 @@ export default function Home() {
       });
 
       if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        if (errorData.code === "MISSING_API_KEY") {
-          throw new Error("OpenAI API Key is missing. Please configure `OPENAI_API_KEY` in your `.env.local` file and restart the development server.");
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const errorData = await res.json().catch(() => ({}));
+          if (errorData.code === "MISSING_API_KEY") {
+            throw new Error("OpenAI API Key is missing. Please configure `OPENAI_API_KEY` in your Vercel Project Settings.");
+          }
+          throw new Error(errorData.error || "Failed to index the document.");
         }
-        throw new Error(errorData.error || "Failed to index the document.");
+        const text = await res.text().catch(() => "");
+        throw new Error(`Server error (${res.status}): ${text.substring(0, 150)}...`);
       }
 
       await fetchDocuments(activeConversation?.id);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "An unexpected error occurred during indexing.";
       setUploadError(msg);
+      // Remove from active RAG documents if indexing failed
+      setActiveRagDocs((prev) => prev.filter((name) => name !== filename));
     } finally {
       setIndexingDoc(null);
     }
@@ -308,8 +329,8 @@ export default function Home() {
       });
 
       if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to delete the document.");
+        const errMsg = await parseResponseError(res, "Failed to delete the document.");
+        throw new Error(errMsg);
       }
 
       // Clear active RAG document if it was the one deleted
@@ -1046,9 +1067,14 @@ export default function Home() {
                         <span>Indexed</span>
                       </div>
                     ) : (
-                      <div className="flex items-center gap-1 text-zinc-550 font-bold text-[8px] uppercase">
-                        <span>Pending</span>
-                      </div>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); handleIndexDocument(doc.name); }}
+                        disabled={indexingDoc !== null}
+                        className="px-2 py-0.5 rounded bg-zinc-800 hover:bg-violet-600 hover:text-white border border-zinc-750 hover:border-violet-500 text-zinc-400 font-semibold transition-all duration-150 cursor-pointer text-[9px] flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <svg className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 21l8.982-8.982M18 13.653V7.622c0-2.24-2.242-4.043-4.316-3.416L3.935 7.071c-1.547.47-1.545 2.655.004 3.122l4.89 1.474" /></svg>
+                        <span>Index</span>
+                      </button>
                     )}
                   </div>
                 </div>
