@@ -234,7 +234,8 @@ export default function Home() {
 
     if (uploadedFilename) {
       setActiveRagDocs((prev) => [...prev, uploadedFilename as string]);
-      await handleIndexDocument(uploadedFilename);
+      // Attempt auto-indexing; if it fails the "Index" button will appear for manual retry
+      await handleIndexDocument(uploadedFilename, true);
     }
   };
 
@@ -277,7 +278,8 @@ export default function Home() {
   };
 
   // Handle PDF vector indexing operations
-  const handleIndexDocument = async (filename: string) => {
+  // isAuto: true when called automatically after upload (shows softer error with retry hint)
+  const handleIndexDocument = async (filename: string, isAuto = false) => {
     setIndexingDoc(filename);
     setUploadError(null);
 
@@ -305,7 +307,11 @@ export default function Home() {
 
       await fetchDocuments(activeConversation?.id);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "An unexpected error occurred during indexing.";
+      const rawMsg = err instanceof Error ? err.message : "An unexpected error occurred during indexing.";
+      // If auto-triggered, surface a friendlier message pointing to the manual Index button
+      const msg = isAuto
+        ? `Auto-indexing failed — the file was uploaded successfully. Click the "Index" button next to the document to retry. (${rawMsg})`
+        : rawMsg;
       setUploadError(msg);
       // Remove from active RAG documents if indexing failed
       setActiveRagDocs((prev) => prev.filter((name) => name !== filename));
@@ -1174,8 +1180,8 @@ export default function Home() {
 
             {/* Modal Footer */}
             <div className="px-6 py-4 border-t border-zinc-800 bg-zinc-900/30 flex items-center justify-between text-[10px] text-zinc-500 shrink-0">
-              <span>Next.js Character Extraction Engine</span>
-              <span>Isolated Local Storage Sandbox</span>
+              <span>PDF Text Extraction</span>
+              <span>Powered by pdf-parse</span>
             </div>
           </div>
         </div>
