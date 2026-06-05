@@ -190,6 +190,8 @@ export default function Home() {
     formData.append("file", file);
     formData.append("conversationId", activeConversation.id);
 
+    let uploadedFilename: string | null = null;
+
     try {
       const res = await fetch("/api/documents", {
         method: "POST",
@@ -201,6 +203,9 @@ export default function Home() {
         throw new Error(errorData.error || "Failed to upload the file.");
       }
 
+      const data = await res.json();
+      uploadedFilename = data.name;
+
       await fetchDocuments(activeConversation.id);
 
       if (fileInputRef.current) {
@@ -211,6 +216,11 @@ export default function Home() {
       setUploadError(msg);
     } finally {
       setIsUploading(false);
+    }
+
+    if (uploadedFilename) {
+      setActiveRagDocs((prev) => [...prev, uploadedFilename as string]);
+      await handleIndexDocument(uploadedFilename);
     }
   };
 
@@ -314,15 +324,15 @@ export default function Home() {
 
   // Pre-configured suggestions to trigger message sending
   const suggestions = [
-    { label: "What is Checkpoint 1?", text: "Can you explain what is implemented in Checkpoint 1?" },
-    { label: "Check Technology Stack", text: "What technologies are used to build this chatbot application?" },
-    { label: "PDF Features", text: "When will PDF uploads and document analysis be fully supported?" }
+    { label: "Document Summarization", text: "Can you summarize the main contents of my uploaded document?" },
+    { label: "Extract Key Findings", text: "Extract the main findings or important metrics from the file." },
+    { label: "Specific Search", text: "Find exact details or tables related to my query inside the document." }
   ];
 
   const RAGsuggestions = [
-    { label: "Search Summary", text: "What is the professional summary or main objective of the candidate?" },
-    { label: "Check Work Experience", text: "Where did this person work, and what was their role as a Data Analyst?" },
-    { label: "Verify BITS Pilani Education", text: "What degree and school was attended between 2019 and 2023?" }
+    { label: "Document Summarization", text: "Can you summarize the main contents of my uploaded document?" },
+    { label: "Extract Key Findings", text: "Extract the main findings or important metrics from the file." },
+    { label: "Specific Search", text: "Find exact details or tables related to my query inside the document." }
   ];
 
   // Send a message
@@ -557,7 +567,6 @@ export default function Home() {
             </div>
             <div>
               <h1 className="font-semibold text-zinc-200 tracking-wide text-sm">AI Document Chat</h1>
-              <span className="text-[11px] font-medium text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded-full border border-violet-500/20">v0.9.0 Citations</span>
             </div>
           </div>
           <button
@@ -641,8 +650,7 @@ export default function Home() {
 
         {/* Footer info */}
         <div className="p-4 border-t border-zinc-800 bg-zinc-950/30 text-center">
-          <p className="text-[10px] text-zinc-500 font-medium">Checkpoint 9 Sandbox</p>
-          <p className="text-[8px] text-zinc-600 mt-0.5">Isolated Development Environment</p>
+          <p className="text-[10px] text-zinc-500 font-medium">AI Document Chat</p>
         </div>
       </aside>
 
@@ -677,11 +685,26 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="text-[10px] font-semibold text-zinc-400 bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-lg">
-                Checkpoint 9 Citations
-              </span>
             </div>
           </header>
+
+          {uploadError && (
+            <div className="bg-red-950/40 border-b border-red-900/50 px-6 py-2.5 flex items-center justify-between gap-4 animate-fade-in z-10">
+              <div className="flex items-center gap-2 text-red-400 text-xs">
+                <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                </svg>
+                <span>{uploadError}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setUploadError(null)}
+                className="text-[10px] text-zinc-500 hover:text-zinc-300 font-medium uppercase tracking-wider cursor-pointer"
+              >
+                Dismiss
+              </button>
+            </div>
+          )}
 
 
           {/* Message Log Box */}
@@ -710,18 +733,43 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-zinc-100 tracking-wide">
-                        {documents.length > 0 ? "Local Document RAG Sandbox" : "AI Document Chat Sandbox"}
+                        AI Document Chat
                       </h3>
                       <p className="text-xs text-zinc-500 mt-0.5">
-                        {documents.length > 0
-                          ? "Select an indexed PDF card in the sidebar to run semantic RAG queries with source citations."
-                          : "Welcome! Start a conversation or select standard tests below."}
+                        Ask questions, find details, and summarize your uploaded PDF documents.
                       </p>
                     </div>
                   </div>
 
                   <div className="space-y-3">
-                    <h4 className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Acceptance Testing Prompts</h4>
+                    <h4 className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Key Features</h4>
+                    <div className="grid grid-cols-1 gap-2.5 text-xs text-zinc-350">
+                      <div className="p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-900 flex items-start gap-3">
+                        <span className="text-violet-400 font-bold">1</span>
+                        <div>
+                          <p className="font-semibold text-zinc-200">Semantic Chat (RAG)</p>
+                          <p className="text-[11px] text-zinc-500">Retrieves exact context from your documents to ground AI responses.</p>
+                        </div>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-900 flex items-start gap-3">
+                        <span className="text-violet-400 font-bold">2</span>
+                        <div>
+                          <p className="font-semibold text-zinc-200">Inline Citations</p>
+                          <p className="text-[11px] text-zinc-500">Every response links directly back to specific page numbers and sources.</p>
+                        </div>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-900 flex items-start gap-3">
+                        <span className="text-violet-400 font-bold">3</span>
+                        <div>
+                          <p className="font-semibold text-zinc-200">Instant Text Viewer</p>
+                          <p className="text-[11px] text-zinc-500">View parsed text contents of your uploaded PDFs directly in the application.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Suggested Prompts</h4>
                     <div className="grid grid-cols-1 gap-2.5">
                       {(documents.length > 0 ? RAGsuggestions : suggestions).map((s, idx) => (
                         <button
@@ -739,17 +787,6 @@ export default function Home() {
                         </button>
                       ))}
                     </div>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-zinc-950/40 border border-zinc-900 flex items-start gap-3">
-                    <svg className="h-4.5 w-4.5 text-violet-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 111.063.852l-.708 2.836a.75.75 0 001.063.852l.041-.028M12 9h.008v.008H12V9zm9 3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <p className="text-[11px] text-zinc-450 leading-relaxed">
-                      {documents.length > 0
-                        ? "You have uploaded documents in this conversation. All queries will automatically search your PDFs, pass context chunks to the AI, and provide structured answers with precise inline citations."
-                        : "Upload a PDF in the sidebar to ask questions about your documents. The AI will automatically switch to RAG mode to retrieve answers with precise citations."}
-                    </p>
                   </div>
                 </div>
               </div>
@@ -899,11 +936,21 @@ export default function Home() {
                 {/* Upload PDF Button */}
                 <button
                   type="button"
+                  disabled={isUploading}
                   onClick={() => fileInputRef.current?.click()}
                   title="Upload PDF"
-                  className="absolute right-16 bottom-3.5 h-8 w-8 rounded-xl flex items-center justify-center bg-zinc-800 hover:bg-violet-900/40 text-zinc-300 hover:text-violet-400 transition-all duration-200 border border-zinc-750 hover:border-violet-500/30"
+                  className={`absolute right-16 bottom-3.5 h-8 w-8 rounded-xl flex items-center justify-center bg-zinc-800 hover:bg-violet-900/40 text-zinc-300 hover:text-violet-400 transition-all duration-200 border border-zinc-750 hover:border-violet-500/30 ${
+                    isUploading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 >
-                  <span className="text-xl font-bold text-white">+</span>
+                  {isUploading ? (
+                    <svg className="animate-spin h-4 w-4 text-violet-400" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  ) : (
+                    <span className="text-xl font-bold text-white">+</span>
+                  )}
                 </button>
 
                 <div className="absolute right-3.5 bottom-3.5 flex items-center gap-2">
@@ -923,9 +970,7 @@ export default function Home() {
                 </div>
               </form>
 
-              <div className="mt-3 flex items-center justify-between text-[10px] text-zinc-650 px-1 font-medium">
-                <span>Use Shift+Enter for line breaks</span>
-                <span>Next.js App Router Sandbox</span>
+              <div className="mt-3">
               </div>
             </div>
           </footer>
@@ -1001,14 +1046,9 @@ export default function Home() {
                         <span>Indexed</span>
                       </div>
                     ) : (
-                      <button
-                        onClick={(e) => { e.stopPropagation(); handleIndexDocument(doc.name); }}
-                        disabled={indexingDoc !== null}
-                        className="px-2 py-0.5 rounded bg-zinc-800 hover:bg-violet-600 hover:text-white border border-zinc-750 hover:border-violet-500 text-zinc-400 font-semibold transition-all duration-150 cursor-pointer text-[9px] flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        <svg className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 21l8.982-8.982M18 13.653V7.622c0-2.24-2.242-4.043-4.316-3.416L3.935 7.071c-1.547.47-1.545 2.655.004 3.122l4.89 1.474" /></svg>
-                        <span>Index</span>
-                      </button>
+                      <div className="flex items-center gap-1 text-zinc-550 font-bold text-[8px] uppercase">
+                        <span>Pending</span>
+                      </div>
                     )}
                   </div>
                 </div>

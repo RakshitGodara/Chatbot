@@ -91,12 +91,47 @@ export async function POST(req: Request) {
     }
 
     // Upload to Supabase Storage
-    const { error: uploadError } = await supabase.storage
+    let { error: uploadError } = await supabase.storage
       .from(BUCKET)
       .upload(safeFilename, buffer, {
         contentType: "application/pdf",
         upsert: true,
       });
+
+    interface ExtendedStorageError {
+      message: string;
+      status?: number;
+      statusCode?: string;
+    }
+
+    const err = uploadError as ExtendedStorageError | null;
+
+    // If bucket doesn't exist, attempt to create it and retry upload
+    if (
+      err &&
+      (err.message?.includes("Bucket not found") ||
+        err.status === 404 ||
+        err.statusCode === "404")
+    ) {
+      const { error: createError } = await supabase.storage.createBucket(BUCKET, {
+        public: false,
+        allowedMimeTypes: ["application/pdf"],
+      });
+
+      if (!createError) {
+        const retryResult = await supabase.storage
+          .from(BUCKET)
+          .upload(safeFilename, buffer, {
+            contentType: "application/pdf",
+            upsert: true,
+          });
+        uploadError = retryResult.error;
+      } else {
+        uploadError = {
+          message: `Bucket not found and auto-creation failed: ${createError.message}`,
+        } as unknown as NonNullable<typeof uploadError>;
+      }
+    }
 
     if (uploadError) {
       return NextResponse.json(
